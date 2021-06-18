@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.14.2
+        image: registry.access.redhat.com/rhscl/nginx-118-rhel7
         ports:
         - containerPort: 80
