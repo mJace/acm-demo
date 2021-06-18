@@ -1,31 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mariadb
+  name: nginx-deployment
   labels:
-    app: mariadb
-    type: database
-    env: acm
+    app: nginx
 spec:
+  replicas: 3
   selector:
     matchLabels:
-      app: mariadb
-  replicas: 2
+      app: nginx
   template:
     metadata:
       labels:
-        app: mariadb
-        type: database
+        app: nginx
     spec:
       containers:
-        - name: mariadb
-          image: quay.io/bitnami/mariadb:10.2.17
-          ports:
-            - containerPort: 3306
-              name: db-port
-          env:
-            - name: MARIADB_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mariadb
-                  key: MYSQL_ROOT_PASSWORD
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
