@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+  labels:
+  name: hello
+spec:
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: caturday
+  wildcardPolicy: None
+  tls:
+    termination: edge
